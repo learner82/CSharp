@@ -11,10 +11,8 @@ namespace Ebakery.Models
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "Name Should be minimum 3 characters and a maximum of 100 characters")]
-        [DataType(DataType.Text)]
+
         public string Name { get; set; }
-        public bool Validity { get; set; }
         public DateTime Date { get; set; }
         [StringLength(250, MinimumLength = 3, ErrorMessage = "Description Should be minimum 3 characters and a maximum of 100 characters")]
         [DataType(DataType.Text)]
@@ -25,12 +23,5 @@ namespace Ebakery.Models
         public int UserId { get; set; }
         public virtual User Owner { get; set; }
 
-        [ForeignKey("Orders")]
-        public int OrderId { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-
-        [ForeignKey("Product")]
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

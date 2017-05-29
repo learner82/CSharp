@@ -30,6 +30,7 @@ namespace Ebakery.Models
         public string StreetName { get; set; }
 
         public int StreetNumber { get; set; }
+
         public int ZipCode { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
@@ -43,10 +44,7 @@ namespace Ebakery.Models
 
         public bool IsAdmin { get; set; }
         public bool NewsLetter { get; set; }
-        public bool OrderCounter { get; set; }
 
-        [ForeignKey("Coupons")]
-        public int CouponId { get; set; }
         public virtual ICollection<Coupon> Coupons { get; set; }
 
         [ForeignKey("Orders")]

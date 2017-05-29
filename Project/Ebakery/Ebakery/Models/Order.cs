@@ -11,20 +11,15 @@ namespace Ebakery.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Quantity { get; set; }
+
         public decimal TotalPrice { get; set; }
 
-        [ForeignKey("OrderItems")]
-        public int OrderItemId { get; set; }
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public bool OrderCounter { get; set; }
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
         public virtual User Customer { get; set; }  // h ka8e paraggelia exei ena customer 
 
-        [ForeignKey("Coupons")]
-        public int CouponId { get; set; }
-        public virtual ICollection<Coupon> Coupons { get; set; }
 
 
     }

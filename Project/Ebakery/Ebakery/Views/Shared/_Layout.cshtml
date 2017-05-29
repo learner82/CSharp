@@ -8,6 +8,7 @@
 
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/css.css" rel="stylesheet" />
+    @Styles.Render("~/Content/maincss.css")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -17,7 +18,7 @@
 
     <div class="jumbotron">
         <div class="container text-center">
-            <img src="~WWW/images/bakerylogo.jpeg" alt="logo" width="150px" height="100px">
+            <img src="~/Content/WWW/images/bakerylogo.jpeg" alt="logo" width="150px" height="100px">
             <p>Mission, Vission & Values</p>
         </div>
     </div>
@@ -31,19 +32,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Logo</a>
+                <a class="navbar-brand" href="">Logo</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="deals.html">Deals</a></li>
-                    <li><a href="#">Catalog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/Products">Products</a></li>
+                    <li><a href="~/Home/Deals">Deals</a></li>
+                    <li><a href="~/Home/Catalog">Catalog</a></li>
+                    <li><a href="~/Home/Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever=""><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="~/Home/LogIn"><span class="glyphicon glyphicon-user"></span> LogIn</a></li>
+                    <li><a href="~/Home/SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
 
                 </ul>
             </div>
@@ -65,39 +66,6 @@
     
     </div>
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="Email" class="control-label">Email:</label>
-                            <input type="text" class="form-control" id="Email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="Password" class="control-label">Password:</label>
-                            <input type="text" class="form-control" id="Password" placeholder="Password">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Sign in</button>
-                    <button type="button" class="btn btn-danger">Cancel </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- JavaScript files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

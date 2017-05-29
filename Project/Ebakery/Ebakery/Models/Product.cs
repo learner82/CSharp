@@ -16,12 +16,7 @@ namespace Ebakery.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        [ForeignKey("Coupon")]
-        public int CouponId { get; set; }
-        public virtual Coupon Coupon { get; set; }
+       
 
-        [ForeignKey("OrderItem")]
-        public int OrederItemId { get; set; }
-        public virtual OrderItem OrderItem { get; set; }
     }
 }

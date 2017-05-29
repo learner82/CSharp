@@ -154,11 +154,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705290705220_initial.cs" />
+    <Compile Include="Migrations\201705290705220_initial.Designer.cs">
+      <DependentUpon>201705290705220_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CombinedViewModel.cs" />
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,6 +173,30 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css.css" />
+    <Content Include="Content\WWW\images\1033249144001_2257652098001_video-still-for-video-2255602883001.jpg" />
+    <Content Include="Content\WWW\images\bakery1.jpg" />
+    <Content Include="Content\WWW\images\bakery2.jpg" />
+    <Content Include="Content\WWW\images\bakery3.jpg" />
+    <Content Include="Content\WWW\images\bakerylogo.jpeg" />
+    <Content Include="Content\WWW\images\bg-header.png" />
+    <Content Include="Content\WWW\images\bread.jpg" />
+    <Content Include="Content\WWW\images\coffee.jpg" />
+    <Content Include="Content\WWW\images\download %281%29.jpg" />
+    <Content Include="Content\WWW\images\download.jpg" />
+    <Content Include="Content\WWW\images\images %281%29.jpg" />
+    <Content Include="Content\WWW\images\images.jpg" />
+    <Content Include="Content\WWW\images\juice.jpg" />
+    <Content Include="Content\WWW\images\offcheese.png" />
+    <Content Include="Content\WWW\images\offcoffee.png" />
+    <Content Include="Content\WWW\images\offer1.png" />
+    <Content Include="Content\WWW\images\offjuice.png" />
+    <Content Include="Content\WWW\images\rsz_offcheese.png" />
+    <Content Include="Content\WWW\images\rsz_offcoffee.png" />
+    <Content Include="Content\WWW\images\rsz_offjuice.png" />
+    <Content Include="Content\WWW\images\spanakopita1.jpg" />
+    <Content Include="Content\WWW\images\sweets.jpg" />
+    <Content Include="Content\WWW\images\woods.jpg" />
+    <Content Include="Content\WWW\images\τριγωνη-XL.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -182,30 +211,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="WWW\images\1033249144001_2257652098001_video-still-for-video-2255602883001.jpg" />
-    <Content Include="WWW\images\bakery1.jpg" />
-    <Content Include="WWW\images\bakery2.jpg" />
-    <Content Include="WWW\images\bakery3.jpg" />
-    <Content Include="WWW\images\bakerylogo.jpeg" />
-    <Content Include="WWW\images\bg-header.png" />
-    <Content Include="WWW\images\bread.jpg" />
-    <Content Include="WWW\images\coffee.jpg" />
-    <Content Include="WWW\images\download %281%29.jpg" />
-    <Content Include="WWW\images\download.jpg" />
-    <Content Include="WWW\images\images %281%29.jpg" />
-    <Content Include="WWW\images\images.jpg" />
-    <Content Include="WWW\images\juice.jpg" />
-    <Content Include="WWW\images\offcheese.png" />
-    <Content Include="WWW\images\offcoffee.png" />
-    <Content Include="WWW\images\offer1.png" />
-    <Content Include="WWW\images\offjuice.png" />
-    <Content Include="WWW\images\rsz_offcheese.png" />
-    <Content Include="WWW\images\rsz_offcoffee.png" />
-    <Content Include="WWW\images\rsz_offjuice.png" />
-    <Content Include="WWW\images\spanakopita1.jpg" />
-    <Content Include="WWW\images\sweets.jpg" />
-    <Content Include="WWW\images\woods.jpg" />
-    <Content Include="WWW\images\τριγωνη-XL.png" />
+    <Content Include="Content\WWW\images\f7c3a115ccc3468aa85b0c09ad90f69d" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -229,8 +235,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="WWW\images\f7c3a115ccc3468aa85b0c09ad90f69d" />
-    <Content Include="Views\Admin\CouponCreation.cshtml" />
     <Content Include="Views\Admin\MyCustomers.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
@@ -239,6 +243,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Admin\CouponCreation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,6 +263,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705290705220_initial.resx">
+      <DependentUpon>201705290705220_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

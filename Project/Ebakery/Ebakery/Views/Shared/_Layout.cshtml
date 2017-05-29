@@ -57,10 +57,10 @@
 
         <footer class="container-fluid text-center">
             <p>Online Store Copyright</p>
-            <form class="form-inline">
+            <form class="form-inline" action="@Url.Action("Register", "Admin")" method="post">
                 Get deals:
-                <input type="email" class="form-control" size="50" placeholder="Email Address">
-                <button type="button" class="btn btn-danger">Sign Up For our Newsletter</button>
+                <input type="email" name="email" class="form-control" size="50" placeholder="Email Address">
+                <button type="submit" class="btn btn-danger">Sign Up For our Newsletter</button>
             </form>
         </footer>
     

@@ -29,8 +29,10 @@ namespace Ebakery.Models
         [DataType(DataType.Text)]
         public string StreetName { get; set; }
 
+        [Range(1, int.MaxValue)]
         public int StreetNumber { get; set; }
 
+        [RegularExpression(@"^\d{5}")]
         public int ZipCode { get; set; }
 
         [Required(ErrorMessage = "Email is required")]

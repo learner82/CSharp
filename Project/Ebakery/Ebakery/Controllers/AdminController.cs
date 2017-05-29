@@ -46,6 +46,12 @@ namespace Ebakery.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Register(string email)
+        {
+            return View();
+        }
+
         public ActionResult MyCustomers()
         {
 

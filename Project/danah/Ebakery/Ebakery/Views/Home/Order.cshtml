@@ -1,0 +1,16 @@
+﻿@model Ebakery.Models.CombinedViewModel
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+ @foreach (var product in Model.Products)
+ {
+
+            <p>@product.Name @product.Price @Html.ActionLink("Add", "Add", new { id = product.Id })</p>
+
+ }
+
+@Html.ActionLink("Send", "SendOrder")

@@ -13,16 +13,34 @@ namespace Ebakery.Controllers
     {
         private MyContext db = new MyContext();
 
-        public ActionResult CouponCreation()
+
+        [Authorize]
+        public ActionResult Index()
         {
-            if (Session["Email"] == null)
-            {
-                return RedirectToAction("Signin");
-            }
-            User u = db.Users.Find((string)Session["Email"]);
+            User u = (User)Session["User"];
             if (u == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Signin", "Home");
+            }
+            if (u.IsAdmin == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult CouponCreation()
+        {
+            User u = (User)Session["User"];
+            if (u == null)
+            {
+                return RedirectToAction("SignΙn", "Home");
+            }
+            if (u.IsAdmin == false)
+            {
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -32,12 +50,15 @@ namespace Ebakery.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CouponCreation(Coupon coupon)
         {
-            if (db.Coupons.Find(coupon.Id) == null)
+            if (db.Coupons.Count(x=>x.Name==coupon.Name) == 0)
             {
+                User u = (User)Session["User"];
+                coupon.UserId = u.Id;
                 db.Coupons.Add(coupon);
-                db.SaveChanges();
                 
-                return RedirectToAction("Index");
+                db.SaveChanges();
+
+                return RedirectToAction("Coupons");
             }
             else
             {
@@ -46,16 +67,52 @@ namespace Ebakery.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Register(string email)
-        {
-            return View();
-        }
-
+        [Authorize]
         public ActionResult MyCustomers()
         {
 
+            User u = (User)Session["User"];
+            if (u == null)
+            {
+                return RedirectToAction("Signin", "Home");
+            }
+            if (u.IsAdmin == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
+
         }
+
+
+
+        [Authorize]
+        public ActionResult Coupons()
+        {
+            User u = (User)Session["User"];
+            if (u == null)
+            {
+                return RedirectToAction("Signin", "Home");
+            }
+            if (u.IsAdmin == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            UserCouponCombinedViewModel vm = new UserCouponCombinedViewModel();
+            vm.Coupons = db.Coupons.ToList();
+            return View(vm);
+        }
+
+        public ActionResult NewsLetter()
+        {
+           UserCouponCombinedViewModel vmNewsLetter = new UserCouponCombinedViewModel();
+           vmNewsLetter.Coupons = db.Coupons.ToList();
+           return View(vmNewsLetter);
+        }
+
+
+
     }
+
 }

@@ -151,6 +151,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsLetterController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,13 +160,51 @@
     <Compile Include="Migrations\201705290705220_initial.Designer.cs">
       <DependentUpon>201705290705220_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705291939075_newtableemail.cs" />
+    <Compile Include="Migrations\201705291939075_newtableemail.Designer.cs">
+      <DependentUpon>201705291939075_newtableemail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705291941579_deletedforeingkeysfromuser.cs" />
+    <Compile Include="Migrations\201705291941579_deletedforeingkeysfromuser.Designer.cs">
+      <DependentUpon>201705291941579_deletedforeingkeysfromuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705292006397_UpdateMyConbtext.cs" />
+    <Compile Include="Migrations\201705292006397_UpdateMyConbtext.Designer.cs">
+      <DependentUpon>201705292006397_UpdateMyConbtext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705292013480_changekeyatnewsletter.cs" />
+    <Compile Include="Migrations\201705292013480_changekeyatnewsletter.Designer.cs">
+      <DependentUpon>201705292013480_changekeyatnewsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301133293_isadminfalse.cs" />
+    <Compile Include="Migrations\201705301133293_isadminfalse.Designer.cs">
+      <DependentUpon>201705301133293_isadminfalse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302229217_smt.cs" />
+    <Compile Include="Migrations\201705302229217_smt.Designer.cs">
+      <DependentUpon>201705302229217_smt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302257548_newsletterchanges.cs" />
+    <Compile Include="Migrations\201705302257548_newsletterchanges.Designer.cs">
+      <DependentUpon>201705302257548_newsletterchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706011259357_admin.cs" />
+    <Compile Include="Migrations\201706011259357_admin.Designer.cs">
+      <DependentUpon>201706011259357_admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706011353070_inttostring.cs" />
+    <Compile Include="Migrations\201706011353070_inttostring.Designer.cs">
+      <DependentUpon>201706011353070_inttostring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CombinedViewModel.cs" />
     <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\NewsletterTrue.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\MyContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserCouponCombinedViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +285,15 @@
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Admin\CouponCreation.cshtml" />
+    <Content Include="Views\NewsLetter\RegisterToNewsletter.cshtml" />
+    <Content Include="Views\NewsLetter\AlreadyRegToNewsLetter.cshtml" />
+    <Content Include="Views\Home\LogOut.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Coupons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -267,6 +313,33 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705290705220_initial.resx">
       <DependentUpon>201705290705220_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291939075_newtableemail.resx">
+      <DependentUpon>201705291939075_newtableemail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291941579_deletedforeingkeysfromuser.resx">
+      <DependentUpon>201705291941579_deletedforeingkeysfromuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705292006397_UpdateMyConbtext.resx">
+      <DependentUpon>201705292006397_UpdateMyConbtext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705292013480_changekeyatnewsletter.resx">
+      <DependentUpon>201705292013480_changekeyatnewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301133293_isadminfalse.resx">
+      <DependentUpon>201705301133293_isadminfalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302229217_smt.resx">
+      <DependentUpon>201705302229217_smt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302257548_newsletterchanges.resx">
+      <DependentUpon>201705302257548_newsletterchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706011259357_admin.resx">
+      <DependentUpon>201706011259357_admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706011353070_inttostring.resx">
+      <DependentUpon>201706011353070_inttostring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

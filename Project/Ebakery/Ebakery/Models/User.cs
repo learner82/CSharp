@@ -22,18 +22,19 @@ namespace Ebakery.Models
         public string Surname { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [Phone]
-        public int Telephone { get; set; }
+        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [Display(Name = "Home Phone")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        public string Telephone { get; set; }
 
         [StringLength(100, MinimumLength = 3, ErrorMessage = "Streetname Should be minimum 3 characters and a maximum of 100 characters")]
         [DataType(DataType.Text)]
         public string StreetName { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int StreetNumber { get; set; }
+        public string StreetNumber { get; set; }
 
         [RegularExpression(@"^\d{5}")]
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
@@ -45,12 +46,10 @@ namespace Ebakery.Models
         public string Password { get; set; }
 
         public bool IsAdmin { get; set; }
-        public bool NewsLetter { get; set; }
+
 
         public virtual ICollection<Coupon> Coupons { get; set; }
 
-        [ForeignKey("Orders")]
-        public int OrderId { get; set; }
         public virtual ICollection<Order> Orders { get; set; } // o customer exei polles paraggelies
 
 

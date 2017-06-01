@@ -9,7 +9,8 @@ namespace Ebakery.Models
     {
         public List<User> Users { get; set; }
         public List<Coupon> Coupons { get; set; }
-        public List <Order> Orders { get; set; }
+        public Order Order { get; set; }
         public List <Product> Products { get; set; }
+        public List<NewsletterTrue> NewsletterTrue { get; set; }
     }
 }

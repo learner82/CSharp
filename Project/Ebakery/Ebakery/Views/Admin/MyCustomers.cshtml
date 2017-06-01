@@ -5,3 +5,57 @@
 
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+
+
+
+<br />  <br /> <br /> <br />
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-borderless table-hover">
+                <caption> My customers</caption>
+                <tr>
+                    <th> Name </th>
+                    <th> Surname </th>
+                    <th> Telephone </th>
+                    <th> StreetName </th>
+                    <th> StreetNumber</th>
+                    <th> ZipCode </th>
+                    <th> Email </th>
+                </tr>
+                @foreach (var Customer in Model.Users)
+                {
+                    <tr>
+                        <td> @Customer.Name </td>
+                        <td> @Customer.Surname </td>
+                        <td> @Customer.Telephone </td>
+                        <td> @Customer.StreetName </td>
+                        <td> @Customer.StreetNumber</td>
+                        <td> @Customer.ZipCode </td>
+                        <td> @Customer.Email </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<br />  <br /> <br /> <br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-borderless table-hover">
+                @foreach (var n in Model.NewsletterTrue)
+                {
+                    <tr>
+                        <td> @n </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

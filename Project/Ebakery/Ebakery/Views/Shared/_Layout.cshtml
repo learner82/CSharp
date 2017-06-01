@@ -16,12 +16,6 @@
 
 <body>
 
-    <div class="jumbotron">
-        <div class="container text-center">
-            <img src="~/Content/WWW/images/bakerylogo.jpeg" alt="logo" width="150px" height="100px">
-            <p>Mission, Vission & Values</p>
-        </div>
-    </div>
 
 
     <nav class="navbar navbar-inverse">
@@ -36,28 +30,42 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/Index">Home</a></li>
                     <li><a href="~/Home/Products">Products</a></li>
                     <li><a href="~/Home/Deals">Deals</a></li>
                     <li><a href="~/Home/Catalog">Catalog</a></li>
                     <li><a href="~/Home/Contact">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="~/Home/LogIn"><span class="glyphicon glyphicon-user"></span> LogIn</a></li>
-                    <li><a href="~/Home/SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="#">Καλωσορίσες @User.Identity.Name</a></li>
+                        <li><a href="~/Home/Logout"><span class=""glyphicon glyphicon-user"></span> LogOut</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/Home/LogIn"><span class="glyphicon glyphicon-user"></span> LogIn</a></li>
+                        <li><a href="~/Home/SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+                    }
 
                 </ul>
             </div>
         </div>
     </nav>
-        
+    <div class="jumbotron">
+        <div class="container text-center">
+            <img src="~/Content/WWW/images/bakerylogo.jpeg" alt="logo" width="150px" height="100px">
+            <p>Mission, Vission & Values</p>
+        </div>
+    </div>
+    
     <div class="container body-content">
-
+        <br><br>
         @RenderBody()
 
         <footer class="container-fluid text-center">
             <p>Online Store Copyright</p>
-            <form class="form-inline" action="@Url.Action("Register", "Admin")" method="post">
+            <form class="form-inline" action="@Url.Action("RegisterNewsletter", "NewsLetter")" method="post">
                 Get deals:
                 <input type="email" name="email" class="form-control" size="50" placeholder="Email Address">
                 <button type="submit" class="btn btn-danger">Sign Up For our Newsletter</button>

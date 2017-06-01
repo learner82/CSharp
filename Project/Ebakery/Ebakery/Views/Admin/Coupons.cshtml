@@ -1,0 +1,34 @@
+﻿@model Ebakery.Models.UserCouponCombinedViewModel
+@{
+    ViewBag.Title = "Coupons";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+<br />  <br /> <br /> <br />
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-borderless table-hover">
+                <caption> My coupons</caption>
+                @foreach (var coupon in Model.Coupons)
+                {
+                    <tr>
+                        <th>Coupon Name</th>
+                        <th>Coupon Description</th>
+                        <th>Coupon Date</th>
+                    </tr>
+                    <tr>
+                        <td>@coupon.Name </td>
+                        <td>@coupon.Description</td>
+                        <td>@coupon.Date</td>
+                   </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

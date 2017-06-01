@@ -26,9 +26,15 @@
                         <td>@coupon.Name </td>
                         <td>@coupon.Description</td>
                         <td>@coupon.Date</td>
+                        <td><a href="@Url.Action("DeleteCoupon", "Admin", new { Id=coupon.Id}, null)">Delete</a></td>
                    </tr>
                 }
             </table>
         </div>
     </div>
 </div>
+
+@if (ViewBag.EmptyList == true)
+{
+    <h1>Δεν έχετε δημιουργήσει ακόμα κουπόνια</h1>
+}

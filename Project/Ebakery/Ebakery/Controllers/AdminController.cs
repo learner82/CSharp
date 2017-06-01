@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ebakery.Models;
-
-
+using System.Web.Security;
 
 namespace Ebakery.Controllers
 {
@@ -20,7 +19,7 @@ namespace Ebakery.Controllers
             User u = (User)Session["User"];
             if (u == null)
             {
-                return RedirectToAction("Signin", "Home");
+                return RedirectToAction("LogIn", "Home");
             }
             if (u.IsAdmin == false)
             {
@@ -36,7 +35,7 @@ namespace Ebakery.Controllers
             User u = (User)Session["User"];
             if (u == null)
             {
-                return RedirectToAction("SignΙn", "Home");
+                return RedirectToAction("LogΙn", "Home");
             }
             if (u.IsAdmin == false)
             {
@@ -74,13 +73,15 @@ namespace Ebakery.Controllers
             User u = (User)Session["User"];
             if (u == null)
             {
-                return RedirectToAction("Signin", "Home");
+                return RedirectToAction("LogIn", "Home");
             }
             if (u.IsAdmin == false)
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            CombinedViewModel vm = new CombinedViewModel();
+            vm.Users = db.Users.ToList();
+             return View(vm);
 
         }
 
@@ -92,25 +93,56 @@ namespace Ebakery.Controllers
             User u = (User)Session["User"];
             if (u == null)
             {
-                return RedirectToAction("Signin", "Home");
+                return RedirectToAction("LogIn", "Home");
             }
             if (u.IsAdmin == false)
             {
                 return RedirectToAction("Index", "Home");
             }
 
+            
             UserCouponCombinedViewModel vm = new UserCouponCombinedViewModel();
             vm.Coupons = db.Coupons.ToList();
-            return View(vm);
+            if (vm.Coupons != null)
+            {
+                return View(vm);
+            }
+            else { 
+                ViewBag.EmptyList = true;
+               return View();
+            }
         }
 
         public ActionResult NewsLetter()
         {
-           UserCouponCombinedViewModel vmNewsLetter = new UserCouponCombinedViewModel();
-           vmNewsLetter.Coupons = db.Coupons.ToList();
-           return View(vmNewsLetter);
+            User u = (User)Session["User"];
+            if (u == null)
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+            if (u.IsAdmin == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            CombinedViewModel vm = new CombinedViewModel();
+            vm.NewsletterTrue = db.NewsletterTrues.ToList();
+            return View(vm);
+
         }
 
+        public ActionResult DeleteCoupon(int Id)
+        {
+            Coupon c = db.Coupons.FirstOrDefault(x => x.Id == Id);
+            db.Coupons.Remove(c);
+            db.SaveChanges();
+            return RedirectToAction("Coupons");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","Home");
+        }
 
 
     }

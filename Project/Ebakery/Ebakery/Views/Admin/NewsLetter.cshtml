@@ -1,0 +1,29 @@
+﻿@model Ebakery.Models.CombinedViewModel
+@{
+    ViewBag.Title = "NewsLetter";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>NewsLetter</h2>
+
+
+<br />  <br /> <br /> <br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-borderless table-hover">
+                <tr>
+                    <th> Email Adress</th>
+                </tr>
+
+                @foreach (var n in Model.NewsletterTrue)
+                {
+                    <tr>
+                        <td> @n.Email </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
